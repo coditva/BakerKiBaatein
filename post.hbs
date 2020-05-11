@@ -109,16 +109,15 @@ into the {body} of the default.hbs template --}}
                 </div>
             </section>
 
+            <section class="post-full-comments">
+                <script defer src="https://commento.coditva.dev/js/commento.js" data-no-fonts="true"></script>
+                <div id="commento"></div>
+            </section>
+
             {{!-- Email subscribe form at the bottom of the page --}}
             {{#if @labs.members}}
                 {{> subscribe-form}}
             {{/if}}
-
-            {{!--
-            <section class="post-full-comments">
-                If you want to embed comments, this is a good place to do it!
-            </section>
-            --}}
 
         </article>
 
