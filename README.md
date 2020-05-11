@@ -1,6 +1,7 @@
-# Casper
+![Deploy Theme](https://github.com/coditva/BakerKiBaatein/workflows/Deploy%20Theme/badge.svg)
+# Baker ki Baatein
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/). This is the latest development version of Casper! If you're just looking to download the latest release, head over to the [releases](https://github.com/TryGhost/Casper/releases) page.
+The default theme for [BakerKiBaatein.com](https://bakerkibaatein.com). This is the latest development version of Casper! If you're just looking to download the latest release, head over to the [releases](https://github.com/coditva/BakerKiBaatein/releases) page.
 
 &nbsp;
 
