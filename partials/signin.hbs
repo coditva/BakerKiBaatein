@@ -1,12 +1,13 @@
 <section class="subscribe-form">
-    <p class="subscribe-form-description">This content is for subscribers only!</p>
-    <h3 class="subscribe-form-title">Subscribe to Khadya Samachaar</h3>
-    <p class="subscribe-form-description">Get the latest posts, a subscribers-only recipe and much more right in your Inbox!</p>
-    <form data-members-form="subscribe">
+{{#if @member}}
+{{else}}
+    <h3 class="subscribe-form-title">Login to Khadya Samachaar</h3>
+    <p class="subscribe-form-description">Sign into your account again for full access</p>
+    <form data-members-form="signin">
         <div class="form-group">
             <input class="subscribe-email" data-members-email placeholder="youremail@example.com" autocomplete="false" />
             <button class="button primary" type="submit">
-                <span class="button-content">Subscribe</span>
+                <span class="button-content">Send login link</span>
                 <span class="button-loader">{{> "icons/loader"}}</span>
             </button>
         </div>
@@ -14,9 +15,8 @@
             <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
         </div>
         <div class="message-error">
-            Please enter a valid email address!
+            <p data-members-error><!-- error message will appear here --></p>
         </div>
     </form>
-    <br />
-    <p class="subscribe-form-description">Or, if you're already a subscriber, <a href="/login">login</a></p>
+{{/if}}
 </section>

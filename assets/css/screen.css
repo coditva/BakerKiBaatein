@@ -65,6 +65,10 @@ body {
     flex-grow: 1;
 }
 
+.login-form-container {
+    margin-top: 25vh;
+}
+
 /* Full width page blocks */
 .outer {
     position: relative;
@@ -293,7 +297,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    overflow: hidden;
     height: 64px;
     font-size: 1.3rem;
 }
@@ -311,7 +314,7 @@ body {
     top: 0;
     z-index: 1000;
     width: 40px;
-    height: 100%;
+    height: 64px;
 }
 
 .site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after,
@@ -478,6 +481,37 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     margin: 0;
 }
 
+.site-nav-right a.link {
+    position: relative;
+    display: block;
+    padding: 12px 12px;
+    color: #fff;
+    opacity: 0.8;
+    transition: opacity 0.35s ease-in-out;
+}
+
+.site-nav-right a.link:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.site-nav-right a.link:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: 8px;
+    left: 12px;
+    height: 1px;
+    background: #fff;
+    opacity: 0.25;
+    transition: all 0.35s ease-in-out;
+}
+
+.site-nav-right a.link:hover:before {
+    right: 12px;
+    opacity: 0.5;
+}
+
 .site-nav-right .nav a {
     white-space: nowrap;
 }
@@ -544,6 +578,106 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     opacity: 1;
 }
 
+.account-menu {
+    position: relative;
+    padding: 0 10px;
+}
+
+.account-menu-avatar {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 1px;
+    width: 32px;
+    height: 32px;
+    background: color(var(--lightgrey) l(+10%));
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.account-menu-avatar img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100%;
+}
+
+.account-menu ul {
+    visibility: hidden;
+    position: absolute;
+    top: 43px;
+    right: 0;
+    z-index: 9998;
+    padding: 8px 0;
+    min-width: 240px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: rgba(39,44,49,0.08) 0 12px 26px, rgba(39, 44, 49, 0.06) 1px 3px 8px;
+    list-style: none;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4,0.01,0.165,0.99), opacity 0.2s cubic-bezier(0.4,0.01,0.165,0.99);
+    transform: translateY(-6px) scale(0.95);
+    transform-origin: top right;
+    pointer-events: none;
+}
+
+.account-menu-avatar.active + ul {
+    visibility: visible;
+    opacity: 1.0;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.account-menu ul:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 16px;
+    z-index: 9998;
+    width: 0;
+    height: 0;
+    border-width: 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+}
+
+.account-menu ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.account-menu .account-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 6px;
+    padding: 4px 20px 12px;
+    border-bottom: 1px solid var(--whitegrey);
+    color: var(--midgrey);
+}
+
+.account-info .account-email {
+    display: inline-block;
+    overflow-x: hidden;
+    margin-top: -4px;
+    max-width: 200px;
+    color: color(var(--midgrey) l(-30%));
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+.account-menu ul a {
+    display: block;
+    padding: 6px 20px;
+    color: color(var(--midgrey) l(-30%));
+}
+
+.account-menu ul a:hover {
+    color: var(--blue);
+    text-decoration: none;
+}
+
 .site-nav-right .nav + .subscribe-button {
     margin-left: 24px;
 }
@@ -596,12 +730,18 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     }
 
     .site-nav {
+        margin-top: 8px;
         height: 80px;
         flex-direction: column-reverse;
     }
 
     .site-nav-left-wrapper {
-        padding: 0 0 0 5vw;
+        padding: 0 5vw;
+        width: 100vw;
+    }
+
+    .site-nav-main .site-nav-left-wrapper:after {
+        height: 100%;
     }
 
     .site-nav-left {
@@ -611,7 +751,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     }
 
     .site-nav-right {
-        overflow: hidden;
         padding: 0 calc(5vw - 10px);
     }
 
@@ -750,6 +889,21 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .post-card-meta .profile-image-wrapper,
 .post-card-meta .avatar-wrapper {
     position: relative;
+}
+
+.post-visibility {
+    display: inline-block;
+    margin: 0 8px 1px 0;
+    padding: 1px 5px;
+    border: var(--lightgrey) 1px solid;
+    color: var(--midgrey);
+    font-size: 1.2rem;
+    line-height: 1.4em;
+    border-radius: 4px;
+}
+
+.post-visibility-public {
+    display: none;
 }
 
 .author-list {
@@ -1717,7 +1871,8 @@ Usage (In Ghost editor):
 
 /* 7.2. Members Subscribe Form
 /* ---------------------------------------------------------- */
-.subscribe-form {
+.subscribe-form,
+.signin-form {
     margin: 1.5em 0;
     padding: 6.5vw 7vw 8vw;
     border: color(var(--lightgrey) l(+10%)) 1px solid;
@@ -1726,7 +1881,8 @@ Usage (In Ghost editor):
     border-radius: 3px;
 }
 
-.subscribe-form-title {
+.subscribe-form-title,
+.signin-title {
     margin: 0 0 3px 0;
     padding: 0;
     color: var(--darkgrey);
@@ -1735,7 +1891,8 @@ Usage (In Ghost editor):
     font-weight: 600;
 }
 
-.subscribe-form-description {
+.subscribe-form-description,
+.signin-description {
     margin-bottom: 0.2em 0 1em;
     color: var(--midgrey);
     font-size: 2.1rem;
@@ -1796,6 +1953,7 @@ Usage (In Ghost editor):
     color(var(--blue) lightness(-4%) saturation(-10%))
     );
     border-radius: 5px;
+    white-space: nowrap;
 
     -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -2934,6 +3092,10 @@ Usage (In Ghost editor):
     .post-card-excerpt {
         color: color(var(--midgrey) l(+10%));
     }
+    
+    .post-visibility {
+        color: var(--lightgrey);
+    }
 
     .author-avatar,
     .static-avatar {
@@ -3104,5 +3266,54 @@ Usage (In Ghost editor):
 
     .subscribe-form .success .message-success {
         color: color(var(--green) l(+5%) s(-5%));
+    }
+
+    .account-menu-avatar {
+        background: color(var(--darkmode) l(+5%));
+    }
+
+    .account-menu-avatar img {
+        opacity: 1.0;
+    }
+
+    .account-menu ul {
+        background: color(var(--darkmode) l(+4%));
+        box-shadow: 0 12px 26px rgba(0,0,0,0.4);
+    }
+
+    .account-menu ul::before {
+        border-color: transparent transparent color(var(--darkmode) l(+4%));
+    }
+
+    .account-menu .account-info {
+        border-color: color(var(--darkmode) l(+10%));
+    }
+
+    .account-menu .account-email,
+    .account-menu ul a {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .subscriber-avatar {
+        border-color: color(var(--darkmode) l(+5%));
+        background: color(var(--darkmode) l(+5%));
+    }
+
+    .subscriber-avatar img {
+        opacity: 1.0;
+    }
+
+    .subscriber-details {
+        border-color: color(var(--darkmode) l(+5%));
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="search"],
+    input[type="url"],
+    select {
+        color: var(--darkgrey);
     }
 }

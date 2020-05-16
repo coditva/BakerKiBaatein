@@ -46,40 +46,44 @@
 
     {{!-- The big email subscribe modal content --}}
     {{#if @labs.members}}
-    <div class="subscribe-success-message">
-        <a class="subscribe-close" href="javascript:;"></a>
-        You've successfully subscribed to {{@site.title}}!
-    </div>
+        {{#if @member}}
+            <!-- already subscribed -->
+        {{else}}
+        <div class="subscribe-success-message">
+            <a class="subscribe-close" href="javascript:;"></a>
+            You've successfully subscribed to {{@site.title}}!
+        </div>
 
-    <div id="subscribe" class="subscribe-overlay">
-        <a class="subscribe-close-overlay" href="#"></a>
-        <a class="subscribe-close-button" href="#"></a>
-        <div class="subscribe-overlay-content">
-            {{#if @site.logo}}
-                <img class="subscribe-overlay-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
-            {{/if}}
-            <div class="subscribe-form">
-                <h1 class="subscribe-overlay-title">Subscribe to Khadya Samachaar</h1>
-                <p class="subscribe-overlay-description">Get the latest posts, a subscribers-only recipe and much more right in your Inbox!</p>
-                <form data-members-form="subscribe">
-                    <div class="form-group">
-                        <input class="subscribe-email" data-members-email placeholder="youremail@example.com"
-                            autocomplete="false" />
-                        <button class="button primary" type="submit">
-                            <span class="button-content">Subscribe</span>
-                            <span class="button-loader">{{> "icons/loader"}}</span>
-                        </button>
-                    </div>
-                    <div class="message-success">
-                        <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
-                    </div>
-                    <div class="message-error">
-                        Please enter a valid email address!
-                    </div>
-                </form>
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-close-overlay" href="#"></a>
+            <a class="subscribe-close-button" href="#"></a>
+            <div class="subscribe-overlay-content">
+                {{#if @site.logo}}
+                    <img class="subscribe-overlay-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{/if}}
+                <div class="subscribe-form">
+                    <h1 class="subscribe-overlay-title">Subscribe to Khadya Samachaar</h1>
+                    <p class="subscribe-overlay-description">Get the latest posts, a subscribers-only recipe and much more right in your Inbox!</p>
+                    <form data-members-form="subscribe">
+                        <div class="form-group">
+                            <input class="subscribe-email" data-members-email placeholder="youremail@example.com"
+                                autocomplete="false" />
+                            <button class="button primary" type="submit">
+                                <span class="button-content">Subscribe</span>
+                                <span class="button-loader">{{> "icons/loader"}}</span>
+                            </button>
+                        </div>
+                        <div class="message-success">
+                            <strong>Great!</strong> Check your inbox and click the link to confirm your subscription.
+                        </div>
+                        <div class="message-error">
+                            Please enter a valid email address!
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+        {{/if}}
     {{/if}}
 
     {{!-- jQuery, required for fitvids --}}
@@ -120,6 +124,26 @@
             $('.subscribe-button').click(function() {
                 $('.subscribe-overlay form').removeClass();
                 $('.subscribe-email').val('');
+            });
+
+            // Reset form on opening subscrion overlay
+            $('.subscribe-button').click(function() {
+                $('.subscribe-overlay form').removeClass();
+                $('.subscribe-email').val('');
+            });
+
+            // Account navigation menu
+            $('.account-menu-avatar').click(function(event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+
+            $('.account-menu-dropdown').click(function(event) {
+                event.stopPropagation();
+            });
+
+            $('body').click(function () {
+                $('.account-menu-avatar').removeClass('active');
             });
         });
     </script>
