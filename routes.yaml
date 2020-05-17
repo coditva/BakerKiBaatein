@@ -1,0 +1,16 @@
+routes:
+  /login/: members/login
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+    filter: tag:-newsletter
+  /newsletter/:
+    permalink: /newsletter/{slug}/
+    template: newsletter
+    filter: tag:newsletter
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
