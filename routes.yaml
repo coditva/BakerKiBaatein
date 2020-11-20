@@ -1,5 +1,5 @@
 routes:
-  /login/: members/login
+  /login/: /#/portal/signup
 
 collections:
   /:
